@@ -1,45 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
 
-    var nums = "123456789"
-    var lower = "abcdefghijklmnopqrstuvwxyz"
-    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    var symbol = "!\"#$%&\'()*+,-./:;<=>?@[\\]^_\`{|}~"
-    var password = ""
+        // Variables for password generators
+        var nums = "123456789"
+        var lower = "abcdefghijklmnopqrstuvwxyz"
+        var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        var special = "!\"#$%&\'()*+,-./:;<=>?@[\\]^_\`{|}~"
+        var password = ""
 
-    
-// Tester
-for(var i = 0; i < 100; i++){
-    console.log(password += randomLower())
-}
+        // Prompting user for their password preferences
+        var passLength = prompt("How long does your password need to be? (Enter a number between 1-128)")
+        var hasNums = confirm("Do you need numbers?")
+        var hasLower = confirm("Do you need lowercase letters?")
+        var hasUpper = confirm("Do you need uppercase letters?")
+        var hasSpecial = confirm("Do you need special characters")
 
 
+        // Generate new string based on user responses
+        var characters = ""
 
+        if (hasNums) {
+            characters += nums
+            console.log("Password will have numbers")
+        }
+        if (hasLower) {
+            characters += lower
+            console.log("Password will have lowercase letters")
+        }
+        if (hasUpper) {
+            characters += upper
+            console.log("Password will have uppercase letters")
+        }
+        if (hasSpecial) {
+            characters += special
+            console.log("Password will have special characters")
+        }
+
+        // Tester
+        for (var i = 0; i < passLength; i++) {
+            password += generator()
+        }
+        console.log(password)
+
+
+        function generator() {
+            return characters.charAt((Math.floor(Math.random() * characters.length)));
+        }
 
     // Random character generating functions
-    function randomUpper(){
-        return upper.charAt((Math.floor(Math.random()*upper.length)));
-    }
+    // function randomUpper(){
+    //     return upper.charAt((Math.floor(Math.random()*upper.length)));
+    // }
 
-    function randomLower(){
-        return lower.charAt((Math.floor(Math.random()*lower.length)));
-    }
+    // function randomLower(){
+    //     return lower.charAt((Math.floor(Math.random()*lower.length)));
+    // }
 
-    function randomNumber(){
-        return nums.charAt((Math.floor(Math.random()*nums.length)));
-    }
+    // function randomNumber(){
+    //     return nums.charAt((Math.floor(Math.random()*nums.length)));
+    // }
 
-    function randomSymbol(){
-        return symbol.charAt((Math.floor(Math.random()*symbol.length)));
-    }
+    // function randomSymbol(){
+    //     return symbol.charAt((Math.floor(Math.random()*symbol.length)));
+    // }
 
     </script>
 </body>
+
 </html>
