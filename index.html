@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    var nums = "123456789"
+    var lower = "abcdefghijklmnopqrstuvwxyz"
+    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    var symbol = "!\"#$%&\'()*+,-./:;<=>?@[\\]^_\`{|}~"
+    var password = ""
+
+    
+// Tester
+for(var i = 0; i < 100; i++){
+    console.log(password += randomLower())
+}
+
+
+
+
+    // Random character generating functions
+    function randomUpper(){
+        return upper.charAt((Math.floor(Math.random()*upper.length)));
+    }
+
+    function randomLower(){
+        return lower.charAt((Math.floor(Math.random()*lower.length)));
+    }
+
+    function randomNumber(){
+        return nums.charAt((Math.floor(Math.random()*nums.length)));
+    }
+
+    function randomSymbol(){
+        return symbol.charAt((Math.floor(Math.random()*symbol.length)));
+    }
+
+    </script>
+</body>
+</html>
