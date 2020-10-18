@@ -1,5 +1,7 @@
 # Javascript Password Generator
 
+## Find my deployed project at: https://mrtavit.github.io/js-password-generator/
+
 This project is a simple password generator using only Javascript. This version of the site will use prompt/alert/confirm textboxes in order to convey all information.
 
 The expected result is that the user will receive a randomly generated password. This password will consist of at least 1 character per character type the user chooses, as well as 1 lower case character. The remainder of the password is randomly generated with characters of the chosen types.
