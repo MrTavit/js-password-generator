@@ -3,43 +3,62 @@ var nums = "123456789"
 var lower = "abcdefghijklmnopqrstuvwxyz"
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var special = "!\"#$%&\'()*+,-./:;<=>?@[\\]^_\`{|}~"
-var password = ""
-
-// Prompting user for their password preferences
-var passLength = prompt("How long does your password need to be? (Enter a number between 1-128)")
-if(passLength <= 128){
-
-var hasNums = confirm("Do you need numbers?")
-var hasLower = confirm("Do you need lowercase letters?")
-var hasUpper = confirm("Do you need uppercase letters?")
-var hasSpecial = confirm("Do you need special characters")
 
 
-// Generate new string based on user responses
-var characters = ""
-
-if (hasNums) {
-    characters += nums
-}
-if (hasLower) {
-    characters += lower
-}
-if (hasUpper) {
-    characters += upper
-}
-if (hasSpecial) {
-    characters += special
+// Returns a random character from an array baseed on the length of it
+function randomIndex(arr) {
+    return arr[Math.floor(Math.random() * arr.length)]
 }
 
-// Tester
-for (var i = 0; i < passLength; i++) {
-    password += generator()
-}
-console.log(password)
-
-
-}
-
+// Will generate a password for a user based on their 
+// password preferences
 function generator() {
-    return characters.charAt((Math.floor(Math.random() * characters.length)));
+    // Prompting user for password length
+    var passLength = prompt("How long does your password need to be? (Enter a number between 8-128)")
+    var password = []
+    var guaranteed = []
+    if (passLength <= 128 && passLength >= 8) {
+        
+        // Prompting user for their password preferences
+        var hasUpper = confirm("Do you need capital letters?")
+        var hasNums = confirm("Do you need numbers?")
+        var hasSpecial = confirm("Do you need special characters")
+
+
+        // Generate new string based on user responses
+        // Lowercase letters are included by default
+        var characters = lower
+
+        // Guaranteed will hold 1 character per selection
+        // They will be inserted onto the password in order to guarantee at least 1 per selection is in the final password
+        guaranteed.push(randomIndex(lower))
+
+        if (hasNums) {
+            characters = characters.concat(nums)
+            guaranteed.push(randomIndex(nums))
+        }
+        if (hasUpper) {
+            characters = characters.concat(upper)
+            guaranteed.push(randomIndex(upper))
+        }
+        if (hasSpecial) {
+            characters = characters.concat(special)
+            guaranteed.push(randomIndex(special))
+        }
+        // Convert final string into an array to allow for easier replacement of guaranteed characters
+        var charArray = characters.split("")
+
+        for (var i = 0; i < passLength; i++) {
+            password.push(randomIndex(charArray))
+        }
+        // Will replace the first few characters of the final password with the guaranteed set
+        for(var i = 0; i < guaranteed.length; i++){
+            password[i] = guaranteed[i]
+        }
+        return password.join('')
+        
+    }
 }
+
+//Calls the password generator function as well as alerts the user with their new password
+alert("Here is your new password: " + generator())
