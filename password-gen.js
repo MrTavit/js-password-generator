@@ -14,7 +14,7 @@ function randomIndex(arr) {
 // password preferences
 function generator() {
     // Prompting user for password length
-    var passLength = prompt("How long does your password need to be? (Enter a number between 8-128)")
+    var passLength = prompt("Welcome to the password generator.\nHow long does your password need to be? (Enter a number between 8-128)")
     var password = []
     var guaranteed = []
     if (passLength <= 128 && passLength >= 8) {
@@ -22,7 +22,7 @@ function generator() {
         // Prompting user for their password preferences
         var hasUpper = confirm("Do you need capital letters?")
         var hasNums = confirm("Do you need numbers?")
-        var hasSpecial = confirm("Do you need special characters")
+        var hasSpecial = confirm("Do you need special characters?")
 
 
         // Generate new string based on user responses
@@ -57,6 +57,9 @@ function generator() {
         }
         return password.join('')
         
+    } else {
+        alert("Input contains invalid characters")
+        alert("Here is your new password: " + generator())
     }
 }
 
