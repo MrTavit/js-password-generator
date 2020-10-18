@@ -1,6 +1,6 @@
 # Javascript Password Generator
 
-## Find my deployed project at: https://mrtavit.github.io/js-password-generator/
+## [Find my deployed project here!](https://mrtavit.github.io/js-password-generator/)
 
 This project is a simple password generator using only Javascript. This version of the site will use prompt/alert/confirm textboxes in order to convey all information.
 
